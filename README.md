@@ -2,7 +2,7 @@
 
 The project goal was to create a platform in order to provide automation for a royalties collection agency to create an author or performer dataset of all recordings produced to date.
 
-The full dataset of public recordings is collected from the the [link to discogs.com](http://discogs.com) repository of public maintained data. Business rules were then created in Python utilizing a Django web interface to view and control the data output. An excel spreadsheet is created and sent to the requesting user.
+The full dataset of public recordings is collected from the [discogs.com](http://discogs.com) repository of public maintained data. Business rules were then created in Python utilizing a Django web interface to view and control the data output. An excel spreadsheet is created and sent to the requesting user.
 
 ### Prerequistites
 
