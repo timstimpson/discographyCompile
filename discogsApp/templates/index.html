@@ -1,0 +1,34 @@
+
+{% extends 'base.html' %} 
+{% block title %}
+Homepage - {{ block.super }} 
+{% endblock title %}
+{% load staticfiles %} 
+{% block content %}
+
+<div id="search_frame">
+
+
+	<p id="artist_search_title">know my artist</p>
+
+		<div id="artist_search">
+			<form role="form" action="{% url 'find_artist' %}" onsubmit="return validateForm()" method="post">
+			{% csrf_token %}
+			{{ form.artist_name }}
+				<div id="artist_search_media">
+					{% for type in form.media %}
+					<span><span class="media_selector">{{type}}</span></span>
+					{% endfor %}
+				</div>
+			<button id="artist_search_btn" type="submit">find my artist</button>
+			</form>
+		</div>
+
+
+</div>
+
+{% for each_artist in artist_list %}
+<p> {{each_artist}} <p>
+{% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block title %}
+Homepage - {{ block.super }} {% endblock title %}
+{% block content %}
+
+<div id="artist_frame">
+
+<span class='artist_choice_left'>
+
+	<p id="artist_search_title">which artist ?</p>
+
+	<form role="form" action="{% url 'find_alias' %}" method="post">
+	{% csrf_token %}
+	<ul>
+	{% for form in artist_select.choices %}
+	{% if forloop.first %}
+	<p><input type='radio' checked='checked' name="my_choice_field" value="{{form.1}}"><span class="Select_artist_name">{{form.0}}</span></p>
+	{% else %}
+	<p><input type='radio' name="my_choice_field" value="{{form.1}}"><span class="Select_artist_name">{{form.0}}</span></p>
+	{% endif %}
+	{% endfor %}
+	</ul>
+	<div class = 'hidden_form'>
+		{{ form }}
+	</div>
+	<button id="artist_search_btn" type="submit">find my artist</button>
+	</form>
+
+</span>
+
+
+</div>
+<a href="/">back</a>
+
+{% endblock content %}

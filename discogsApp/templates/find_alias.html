@@ -1,0 +1,99 @@
+{% extends 'base.html' %} {% block title %}
+Homepage - {{ block.super }} {% endblock title %}
+{% block content %}
+
+<div id="artist_frame">
+	<div id="artist_frame">
+		<p id="artist_search_title">which groups and alias ?</p>
+	</div>
+	<div id='alias_select'>
+		<span class='artist_choice_left'>
+		<p id="confirm_alias_title"><b>Groups</b></p>
+		</span>
+
+		<span class='artist_choice_right'>
+		<p id="confirm_alias_title"><b>Alias</b></p>
+
+		</span>
+
+	</div>
+
+
+
+
+	<div id='alias_select'>
+
+
+
+
+		<form role="form" action="/confirm_alias/" method="post">
+		{% csrf_token %}
+		{{ alias_form_set.management_form }}
+		<span class='artist_choice_left'>		
+		{% for form in alias_form_set %}
+
+		{% if form.group.value %}
+		<div class = "alias_box">
+		<p>
+		<span class = "alias_name">{{ form.name }}</span>
+		<span class = "alias_members">{{ form.members }}</span>
+		<span class = "alias_include">{{ form.include }}<label for='id_form-{{ forloop.counter0 }}-include'></label></span>
+		<span class = "main_artist">{{ form.main_artist }}</span>
+		</p>
+		<p>
+		<span class = "alias_id">{{ form.alias_id }}</span>
+		<span class = "alias_from_date">{{ form.from_date }}</span>
+		<span class = "alias_to_date">{{ form.to_date }}</span>
+		<span class = "alias_roles">{{ form.roles }}</span>
+		<span class = "alias_group">{{ form.group }}</span>
+		</p>
+		</div>
+
+		{% else %}
+		{% endif %}
+		{% endfor %}
+		</span>
+		<span class='artist_choice_right'>
+		{% for form in alias_form_set %}
+		{% if not form.group.value %}
+		<div class = "alias_box">
+		<p>
+		<span class = "alias_name">{{ form.name }}</span>
+		<span class = "alias_members">{{ form.members }}</span>
+		<span class = "alias_include">{{ form.include }}<label for='id_form-{{ forloop.counter0 }}-include'></label></span>
+		<span class = "main_artist">{{ form.main_artist }}</span>
+		</p>
+		<p>
+		<span class = "alias_id">{{ form.alias_id }}</span>
+		<span class = "alias_from_date">{{ form.from_date }}</span>
+		<span class = "alias_to_date">{{ form.to_date }}</span>
+		<span class = "alias_roles">{{ form.roles }}</span>
+		<span class = "alias_group">{{ form.group }}</span>
+		</p>
+		</div>
+		{% endif %}
+		{% endfor %}
+		</span>
+		<p>{{ email_form }}
+		</p>
+		<div class='hidden_form'>
+			{{ type_form.as_p }}
+		</div>
+		<button id="artist_search_btn" type="submit">find my artist</button>
+		</form>
+
+	</div>
+
+</div>
+
+<a href="/">back</a>
+
+
+
+
+
+
+
+
+
+{% endblock content %}
