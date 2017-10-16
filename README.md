@@ -8,7 +8,7 @@ The full dataset of public recordings is collected from the the [link to discogs
 
 * Obtain a copy of the discogs database from [discogs.com](http://discogs.com) which is delivered in XML formatted data. This must be then converted to an SQL format database on your local machine.
 
-* The code is written in Python 3.4 and all required modules are contained in the ** discogs-req.txt file in this repository
+* The code is written in Python 3.4 and all required modules are contained in the ** discogs-req.txt ** file in this repository
 
 * Add the modules in DiscogsApp and DiscogsPro to your Django directory
 
